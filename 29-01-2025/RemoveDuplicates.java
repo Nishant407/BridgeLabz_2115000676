@@ -1,4 +1,3 @@
-import java.util.LinkedHashSet;
 import java.util.Scanner;
 
 public class RemoveDuplicates {
@@ -15,16 +14,23 @@ public class RemoveDuplicates {
     }
     
     public static String removeDuplicates(String str) {
-        LinkedHashSet<Character> set = new LinkedHashSet<>();
-        StringBuilder sb = new StringBuilder();
+        char[] chars = str.toCharArray();
+        char[] result = new char[str.length()];
+        int index = 0;
         
-        for (char c : str.toCharArray()) {
-            if (set.add(c)) {
-                sb.append(c);
+        for (int i = 0; i < chars.length; i++) {
+            boolean found = false;
+            for (int j = 0; j < index; j++) {
+                if (chars[i] == result[j]) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                result[index++] = chars[i];
             }
         }
         
-        return sb.toString();
+        return new String(result, 0, index);
     }
 }
-
