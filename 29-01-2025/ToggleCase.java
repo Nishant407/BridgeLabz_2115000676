@@ -14,18 +14,16 @@ public class ToggleCase {
     }
     
     public static String toggleCase(String str) {
-        StringBuilder sb = new StringBuilder();
+        char[] chars = str.toCharArray();
         
-        for (char c : str.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                sb.append(Character.toLowerCase(c));
-            } else if (Character.isLowerCase(c)) {
-                sb.append(Character.toUpperCase(c));
-            } else {
-                sb.append(c);
+        for (int i = 0; i < chars.length; i++) {
+            if (Character.isUpperCase(chars[i])) {
+                chars[i] = Character.toLowerCase(chars[i]);
+            } else if (Character.isLowerCase(chars[i])) {
+                chars[i] = Character.toUpperCase(chars[i]);
             }
         }
         
-        return sb.toString();
+        return new String(chars);
     }
 }
