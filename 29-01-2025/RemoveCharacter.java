@@ -17,14 +17,15 @@ public class RemoveCharacter {
     }
     
     public static String removeCharacter(String str, char ch) {
-        StringBuilder result = new StringBuilder();
+        char[] chars = new char[str.length()];
+        int index = 0;
         
-        for (char c : str.toCharArray()) {
-            if (c != ch) {
-                result.append(c);
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != ch) {
+                chars[index++] = str.charAt(i);
             }
         }
         
-        return result.toString();
+        return new String(chars, 0, index);
     }
 }
